@@ -1,0 +1,378 @@
+$main_dark = #000
+$main_lite = #fff
+$main_highlite = #FBD784
+$main_higlite_title = #FFC178;
+$main_buttons = #FFA343
+$main_shift = 4.7rem;
+
+html,
+body {
+    font: 18px/1.7 'Open Sans', sans-serif;
+}
+
+body {
+    background: $main_dark url('/images/cover.jpg') no-repeat center top;
+    background-size: 100% auto;
+    color: $main_lite; 
+}
+
+a {
+    color: $main_highlite;
+    transition: opacity 0.3s;
+    opacity: 1;
+
+    &:visited {
+        /* color: darken($main_highlite, 10); */
+        color: $main_highlite;
+    }
+
+    &:hover,
+    &:active {
+        opacity: 0.7;
+    }
+}
+
+/* Main styles */
+.content {
+    padding: 0 $main_shift $main_shift;
+    max-width: 1460px;
+    margin: 0 auto;
+
+    p {
+        margin-bottom: 1.3em;
+    }
+}
+
+.cover-space {
+    /* Делаем отступ вниз, чтобы получить всю картинку */
+    padding-bottom: 82%;
+}
+
+.header {
+    /* Поднимаем header наверх с помощью position */
+    position: absolute;
+    top: 2rem;
+    width: 100%;
+
+    &__content {
+        display: grid;
+        grid-template-columns: auto 1fr auto;
+        padding: 0 $main_shift;
+        align-items: center;
+    }
+
+    &__center {
+        display: flex;
+        justify-content: center;
+    }
+}
+
+.logo {
+    color: $main_lite;
+    text-decoration: none;
+    letter-spacing: 1%;
+
+    &:visited {
+        color: $main_lite;
+    }
+
+    &__title {
+        font-size: 1.3rem;
+        font-weight: 700;
+    }
+}
+
+.main-nav {
+    &__list {
+        display: flex;
+    }
+
+    &__link {
+        color: $main_lite;
+        text-decoration: none;
+        padding: 1.8rem 1.38rem;
+        display: inline-block;
+
+        &:visited {
+            color: $main_lite;
+        }
+    }
+}
+
+.search {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &__icon {
+        width: 1rem;
+        height: 1rem;
+        background: url('/images/icons/search.svg') no-repeat center center;
+        background-size: content;
+        cursor: pointer;
+        padding-right: 0.5rem;
+    }
+
+    &__form {
+        background: none;
+        border: none;
+        transition: width 0.3s;
+        width: 3.4rem;
+        font: 0.9rem/1 'Open Sans', sans-serif;
+        padding: 0.2rem 0.5rem;
+        border-radius: 5px;
+
+        &::placeholder {
+            color: white;
+        }
+
+        &:focus {
+            border: none;
+            outline: none;
+            width: 10rem;
+            background: white;
+
+            &::placeholder {
+            color: $main_dark;
+            }
+        }
+    }
+}
+
+.section__main {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    position: absolute;
+    left: $main_shift;
+    right: $main_shift;
+    top: 14vw;
+}
+
+.main-title {
+    font-size: 1rem;
+    margin-bottom: 6.2em;
+
+    &__summary { 
+        font-weight: 700; /* Bold - 700 */
+        color: $main_higlite_title;
+        text-transform: uppercase;
+        letter-spacing: .34em;
+        display: flex;
+        align-items: center;
+        margin-bottom: 1.5em;
+
+        /* задаем желтую линию через псевдоэлемент before */
+        &::before {
+            content: '';
+            display: block;
+            width: 4em;
+            height: 3px;
+            margin-right: 1.5em;
+            background: $main_higlite_title;
+        }
+    }
+
+    &__text {
+        font-size: 5.4em; /* отталкиваемся от 1 rem - 18px */
+        font-weight: 700;
+        line-height: 1.1;
+
+        &_regular {
+            display: block; /* с новой строки */
+            font-size: 0.9em; /* отталкиваемся от 5.4em */
+            font-weight: 400;
+        }
+    }
+}
+
+.main-title_small {
+    font-size: 1rem;
+    margin-bottom: 1.8em;
+
+    /* переопределили селекторы */
+    .main-title__summary { 
+        color: $main_higlite;
+
+        /* задаем желтую линию через псевдоэлемент before */
+        &::before {
+            background: $main_higlite;
+        }
+    }
+
+    .main-title__text {
+        font-size: 3.4em;
+        line-height: 1.4;
+    }
+}
+
+.social-networks {
+    position: absolute;
+    left: 0; /* потому что уже находится внутри section__main, а там есть отступы по бокам */
+    top: 4rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    &__title {
+        writing-mode: vertical-rl;
+        margin-bottom: 1.3rem;
+    }
+
+    &__item {
+        margin-bottom: 1rem;
+    }
+
+    &__link {
+        opacity: 1;
+        transition: opacity 0.3s;
+
+        &:hover {
+            opacity: 0.7;
+        }
+    }
+}
+
+.scroll-down {
+    display: flex;
+    cursor: pointer;
+    opacity: 1;
+    transition: 0.3s;
+
+    &:hover {
+        opacity: 0.7;
+    }
+
+    &__icon {
+        margin: 0.2em 0 0 0.5em;
+    }
+}
+
+/* Columns */
+.section {
+    margin-bottom: 14rem;
+}
+
+.section-cols {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.section-col {
+    /* Первая колонка */
+    &:first-child {
+        width: 40%;
+    }
+
+    /* Вторая колонка */
+    &:last-child {
+        width: 44%;
+    }
+
+    &__image {
+        width: 100%;    
+    }
+}
+
+.arrow-link {
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+
+    &__icon {
+        margin: 0.1rem 0 0 0.4rem;
+    }
+}
+
+/* Gallery */
+.gallery {
+    &__slide {
+        width: 100%;
+        padding-bottom: 67%;
+        pointer-events: none; /* чтоб не было выделения текста и мы могли перелистывать картинки */
+        background-size: cover; /* чтоб картинка растянулась по ширине */
+    }
+}
+
+/* Icons */
+.icon__instagram {
+    width: 1.3rem;
+    height: 1.3rem;
+    background: url('/images/icons/instagram.svg') no-repeat center center;
+    background-size: contain;
+}
+
+.icon__twitter {
+    width: 1.3rem;
+    height: 1.3rem;
+    background: url('/images/icons/twitter.svg') no-repeat center center;
+    background-size: contain;
+}
+
+.icon__facebook {
+    width: 1.3rem;
+    height: 1.3rem;
+    background: url('/images/icons/facebook.svg') no-repeat center center;
+    background-size: contain;
+}
+
+.icon__arrow_downward {
+    width: 1rem;
+    height: 1.4rem;
+    background: url('/images/icons/arrow_downward.svg') no-repeat center center;
+    background-size: contain;
+}
+
+.icon__arrow_rightward {
+    width: 1.4rem;
+    height: 1rem;
+    background: url('/images/icons/arrow_rightward.svg') no-repeat center center;
+    background-size: contain;
+}
+
+@media screen and (max-width: 1790px) {
+    html,
+    body {
+        font-size: 16px;
+    }
+
+    .section-col {
+        &:first-child {
+            width: 40%;
+        }
+
+        &:last-child {
+            width: 50%;
+        }
+    }
+
+    .content {
+        max-width: 1200px;
+    }
+}
+
+@media screen and (max-width: 1550px) {
+    html,
+    body {
+        font-size: 14px;
+    }
+}
+
+@media screen and (max-width: 1380px) {
+    .section-col {
+        &:first-child {
+            width: 43%;
+        }
+
+        &:last-child {
+            width: 50%;
+        }
+    }
+}
+
+@media screen and (max-width: 1310px) {
+    .main-title {
+        font-size: 0.9rem;
+    }
+}
