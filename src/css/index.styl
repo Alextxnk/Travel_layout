@@ -41,6 +41,12 @@ a {
     p {
         margin-bottom: 1.3em;
     }
+
+    &_small {
+        max-width: 934px;
+        padding: 0 2.75rem 2.5rem;
+        margin: 0 auto;
+    }
 }
 
 .cover-space {
@@ -206,6 +212,24 @@ a {
     }
 }
 
+.main-title_centered {
+    text-align: center;
+
+    .main-title__summary {
+        justify-content: center;
+
+        &::after {
+            content: '';
+            display: block;
+            width: 4em;
+            height: 3px;
+            // отгимаем потому что letter-spacing у последней буквы 0.36em
+            margin-left: calc(1.5em - 0.36em);
+            background: $main_higlite_title;
+        }
+    }
+}
+
 .social-networks {
     position: absolute;
     left: 0; /* потому что уже находится внутри section__main, а там есть отступы по бокам */
@@ -250,7 +274,7 @@ a {
 
 /* Columns */
 .section {
-    margin-bottom: 14rem;
+    margin-bottom: 14rem; /* отступ для галереи */
 }
 
 .section-cols {
@@ -283,15 +307,29 @@ a {
     &__icon {
         margin: 0.1rem 0 0 0.4rem;
     }
+
+    &_centered {
+        justify-content: center;
+    }
 }
 
 /* Gallery */
 .gallery {
     &__slide {
+        position: relative;
         width: 100%;
         padding-bottom: 67%;
-        pointer-events: none; /* чтоб не было выделения текста и мы могли перелистывать картинки */
+        /* pointer-events: none; */ /* чтоб не было выделения текста и мы могли перелистывать картинки */
         background-size: cover; /* чтоб картинка растянулась по ширине */
+    }
+
+    &__content {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        text-align: center;
+        background: linear-gradient(to top, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0) 100%);
     }
 }
 
